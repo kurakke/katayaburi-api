@@ -9,3 +9,32 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id       String   @id @default(uuid())
+  nickname String   @unique
+  Answer   Answer[]
+}
+
+model Answer {
+  id         String   @id @default(uuid())
+  text       String
+  created_at DateTime @default(now())
+  gamelog    Gamelog  @relation(fields: [gamelog_id], references: [id])
+  gamelog_id String
+  user       User     @relation(fields: [user_id], references: [id])
+  user_id    String
+}
+
+model Gamelog {
+  id      String   @id @default(uuid())
+  answers Answer[]
+  Thema   Thema    @relation(fields: [thema_id], references: [id])
+  thema_id String
+}
+
+model Thema {
+  id String @id @default(uuid())
+  text String
+  gamelogs Gamelog[]
+}
