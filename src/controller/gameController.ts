@@ -48,5 +48,20 @@ export const game = (socket: any, room: Room) => {
         return currentFunc(prevMessage);
     }, Promise.resolve('')).then(() => {
         console.log('end');
+        const answers = async () => {
+            prisma.answer.findMany({
+                where: {
+                    gamelog_id: (await GameLog).id
+                },
+                orderBy: {
+                    created_at: 'asc'
+                }
+            })
+        }
+        const result = {
+            thema: selectedThema,
+            answers: answers
+        }
+        socket.to(room.passphrase).emit('answers',result)
     });
 }
