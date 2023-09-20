@@ -12,7 +12,7 @@ export const handleJoinOrCreateRoom = (passphrase: string, nickname: string) => 
         rooms.push(room);
     }
     const userId = uuid();
-    
+
     const player = {
         id: userId,
         nickname: nickname
