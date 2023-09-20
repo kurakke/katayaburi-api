@@ -13,10 +13,10 @@ export class RoomManager {
         return this.rooms.find(room => room.passphrase === passphrase);
     }
 
-    joinOrCreateRoom(passphrase: string, nickname: string): Room {
+    joinOrCreateRoom(id: string, passphrase: string, nickname: string): Room {
         let room = this.findRoomByPassphrase(passphrase);
         const player: Player = {
-            id: uuid(),
+            id: id,
             nickname: nickname,
         };
         if (!room) {
