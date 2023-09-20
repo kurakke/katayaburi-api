@@ -6,7 +6,7 @@ export const setupSocket = (io: any) => {
         socket.on('joinOrCreateRoom', (passphrase: string, nickname: string) => {
             const room = handleJoinOrCreateRoom(passphrase, nickname);
             socket.join(room.passphrase);
-            socket.emit('joinedRoom', room.passphrase);
+            socket.to(room.passphrase).emit('roomMembers',room.members)
             socket.on('gamestart', (roomId: string) => {
                 if(room.canStartGame()) {
                     io.to(roomId).emit('gamestart');
