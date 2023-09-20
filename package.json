@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "test": "test: vitest",
+    "test": "vitest",
     "dev": "nodemon src/index.ts"
   },
   "keywords": [],
