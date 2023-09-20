@@ -1,6 +1,5 @@
 import { Room } from "./room";
 import { Player } from "./room";
-import { v4 as uuid } from 'uuid'
 
 export class RoomManager {
     private rooms: Room[] = [];

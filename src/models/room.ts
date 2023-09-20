@@ -1,4 +1,3 @@
-import { v4 as uuid } from 'uuid'
 export interface Player {
     id: string;
     nickname: string;

@@ -1,7 +1,5 @@
 import express, { Request, Response } from 'express';
 import http from 'http';
-import { Room } from './models/room';
-import { v4 as uuidv4, v4 } from 'uuid';
 import { setupSocket } from './routes/socketRoutes';
 
 const app = express();
