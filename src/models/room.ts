@@ -32,18 +32,18 @@ export class Room {
         return this.memberCount() >= 3;
     }
 
-    startGame(triggeredBy: string): string {
+    startGame(triggeredBy: string): boolean {
         if (!this.canStartGame()) {
-            return "Not enough members to start the game.";
+            return false
         }
         if (this.gameStarted) {
-            return "Game is already started!";
+            return false
         }
         const isMember = this.members.some(member => member.id === triggeredBy);
         if (isMember) {
             this.gameStarted = true;
-            return "Game has started!";
+            return true
         }
-        return `${triggeredBy} is not a member of this room.`;
+        return false;
     }
 }
