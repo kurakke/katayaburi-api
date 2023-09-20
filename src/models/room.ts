@@ -5,13 +5,11 @@ export interface Player {
 }
 
 export class Room {
-    id: string;
     passphrase: string;
     members: Player[] = [];
     gameStarted: boolean = false;
 
     constructor(passphrase: string) {
-        this.id = uuid();
         this.passphrase = passphrase;
     }
 
