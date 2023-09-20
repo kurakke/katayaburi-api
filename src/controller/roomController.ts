@@ -10,14 +10,17 @@ export const handleJoinOrCreateRoom = (passphrase: string, nickname: string) => 
     if (!room) {
         room = new Room(passphrase);
         rooms.push(room);
+        room.addMember({
+            id: uuid(),
+            nickname: nickname,
+        });
+    } else {
+        room.addMember({
+            id: uuid(),
+            nickname: nickname,
+        })
     }
-    const userId = uuid();
 
-    const player = {
-        id: userId,
-        nickname: nickname
-    }
-    room.addMember(player);
     console.log(room.members)
     return room;
 };
