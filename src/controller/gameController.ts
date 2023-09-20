@@ -62,6 +62,7 @@ export const game = (socket: any, room: Room) => {
             thema: selectedThema,
             answers: answers
         }
+        socket.to(room.passphrase).emit('is_end', true);
         socket.to(room.passphrase).emit('answers',result)
     });
 }
