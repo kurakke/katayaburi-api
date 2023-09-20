@@ -5,8 +5,8 @@ export const setupSocket = (io: any) => {
     io.on('connection', (socket: any) => {
         socket.emit('kurakke', 'kurakke');
         const roomManager = new RoomManager();
-        socket.on('joinOrCreateRoom', (passphrase: string, nickname: string) => {
-            const room = roomManager.joinOrCreateRoom(socket.id, passphrase, nickname);
+        socket.on('joinOrCreateRoom', async (passphrase: string, nickname: string) => {
+            const room = await roomManager.joinOrCreateRoom(socket.id, passphrase, nickname);
             socket.join(room.passphrase);
             io.to(room.passphrase).emit('roomMembers',room.members)
         });
