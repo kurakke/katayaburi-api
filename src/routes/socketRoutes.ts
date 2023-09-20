@@ -7,6 +7,11 @@ export const setupSocket = (io: any) => {
             const room = handleJoinOrCreateRoom(passphrase, nickname);
             socket.join(room.passphrase);
             socket.emit('joinedRoom', room.passphrase);
+            socket.on('gamestart', (roomId: string) => {
+                if(room.canStartGame()) {
+                    io.to(roomId).emit('gamestart');
+                }
+            })
         });
     });
 };
