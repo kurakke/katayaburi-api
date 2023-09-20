@@ -1,18 +1,23 @@
+export interface Player {
+    id: string;
+    nickname: string;
+}
+
 export class Room {
     passphrase: string;
-    members: string[] = [];
+    members: Player[] = [];
     gameStarted: boolean = false;
 
     constructor(passphrase: string) {
         this.passphrase = passphrase;
     }
 
-    addMember(member: string): void {
+    addMember(member: Player): void {
         this.members.push(member);
     }
 
-    removeMember(member: string): void {
-        const index = this.members.indexOf(member);
+    removeMember(memberId: string): void {
+        const index = this.members.findIndex(member => member.id === memberId);
         if (index !== -1) {
             this.members.splice(index, 1);
         }
@@ -33,7 +38,8 @@ export class Room {
         if (this.gameStarted) {
             return "Game is already started!";
         }
-        if (this.members.includes(triggeredBy)) {
+        const isMember = this.members.some(member => member.id === triggeredBy);
+        if (isMember) {
             this.gameStarted = true;
             return "Game has started!";
         }
