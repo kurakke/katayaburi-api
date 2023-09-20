@@ -9,7 +9,7 @@ export const setupSocket = (io: any) => {
         socket.on('joinOrCreateRoom', (passphrase: string, nickname: string) => {
             const room = roomManager.joinOrCreateRoom(passphrase, nickname);
             socket.join(room.passphrase);
-            socket.to(room.passphrase).emit('roomMembers',room.members)
+            io.to(room.passphrase).emit('roomMembers',room.members)
 
         });
         socket.on('gamestart', (roomPassphrase: string) => {
