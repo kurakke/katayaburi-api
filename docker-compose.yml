@@ -17,7 +17,7 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: nextapp
     ports:
-      - "5432:5432"
+      - "5444:5444"
   studio:
     image: node:18.17.1
     working_dir: /app
