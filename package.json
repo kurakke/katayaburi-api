@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "test: vitest",
     "dev": "nodemon src/index.ts"
   },
   "keywords": [],
@@ -24,6 +24,7 @@
     "@types/socket.io": "^3.0.2",
     "express": "^4.18.2",
     "socket.io": "^4.7.2",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "vitest": "^0.34.4"
   }
 }
