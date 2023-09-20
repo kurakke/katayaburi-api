@@ -1,14 +1,17 @@
+import { v4 as uuid } from 'uuid'
 export interface Player {
     id: string;
     nickname: string;
 }
 
 export class Room {
+    id: string;
     passphrase: string;
     members: Player[] = [];
     gameStarted: boolean = false;
 
     constructor(passphrase: string) {
+        this.id = uuid();
         this.passphrase = passphrase;
     }
 
