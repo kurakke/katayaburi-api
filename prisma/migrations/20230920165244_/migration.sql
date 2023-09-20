@@ -33,9 +33,6 @@ CREATE TABLE "Thema" (
     CONSTRAINT "Thema_pkey" PRIMARY KEY ("id")
 );
 
--- CreateIndex
-CREATE UNIQUE INDEX "User_nickname_key" ON "User"("nickname");
-
 -- AddForeignKey
 ALTER TABLE "Answer" ADD CONSTRAINT "Answer_gamelog_id_fkey" FOREIGN KEY ("gamelog_id") REFERENCES "Gamelog"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
