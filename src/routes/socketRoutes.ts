@@ -1,5 +1,5 @@
 import { handleJoinOrCreateRoom } from '../controller/roomController';
-
+import { game } from '../controller/gameController';
 export const setupSocket = (io: any) => {
     io.on('connection', (socket: any) => {
         socket.emit('kurakke', 'kurakke');
@@ -10,6 +10,7 @@ export const setupSocket = (io: any) => {
             socket.on('gamestart', (roomId: string) => {
                 if(room.canStartGame()) {
                     io.to(roomId).emit('gamestart');
+                    game(socket, room);
                 }
             })
         });
