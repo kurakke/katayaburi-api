@@ -1,6 +1,6 @@
 import { Room } from "../models/room"
 import { themaSelect } from "../utils/themaSelect"
-import { Thema, thema } from "../utils/constants"
+import { thema } from "../utils/constants"
 
 export const game = (socket: any, room: Room) => {
     const members = room.members
