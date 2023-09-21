@@ -5,6 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "test": "vitest",
+    "start": "node .",
     "dev": "nodemon src/index.ts"
   },
   "keywords": [],

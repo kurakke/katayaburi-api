@@ -1,15 +1,13 @@
 version: '3'
 
 services:
-  web:
+  app:
     build:
       context: .
       dockerfile: Dockerfile
-    volumes:
-      - .:/app
-      - /app/node_modules
     ports:
-      - "8000:8000"
+      - "3000:3000"
+
   db:
     image: postgres:latest
     environment:
@@ -17,7 +15,10 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: nextapp
     ports:
-      - "5444:5444"
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
   studio:
     image: node:18.17.1
     working_dir: /app
@@ -28,3 +29,6 @@ services:
       - "5555:5555"
     depends_on:
       - db
+
+volumes:
+  pgdata:

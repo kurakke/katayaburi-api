@@ -3,7 +3,7 @@ import http from 'http';
 import { setupSocket } from './routes/socketRoutes';
 
 const app = express();
-const port = 8000;
+const port = process.env.APP_PORT || 3000;
 const server = http.createServer(app);
 
 const io = require('socket.io')(server, {
