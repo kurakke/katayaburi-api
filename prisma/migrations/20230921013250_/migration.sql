@@ -26,6 +26,16 @@ CREATE TABLE "Gamelog" (
 );
 
 -- CreateTable
+CREATE TABLE "Member" (
+    "id" TEXT NOT NULL,
+    "nickname" TEXT NOT NULL,
+    "pass_phrase" TEXT NOT NULL,
+    "userId" TEXT,
+
+    CONSTRAINT "Member_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "Thema" (
     "id" TEXT NOT NULL,
     "text" TEXT NOT NULL,
@@ -41,3 +51,6 @@ ALTER TABLE "Answer" ADD CONSTRAINT "Answer_user_id_fkey" FOREIGN KEY ("user_id"
 
 -- AddForeignKey
 ALTER TABLE "Gamelog" ADD CONSTRAINT "Gamelog_thema_id_fkey" FOREIGN KEY ("thema_id") REFERENCES "Thema"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Member" ADD CONSTRAINT "Member_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;

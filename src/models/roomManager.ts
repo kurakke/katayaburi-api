@@ -28,6 +28,7 @@ export class RoomManager {
             data: {
                 id: id,
                 nickname: nickname,
+                room_id: room.id,
             }
         });
         room.addMember(user);
